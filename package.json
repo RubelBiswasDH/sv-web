@@ -27,8 +27,5 @@
 	"dependencies": {
 		"chart.js": "^4.4.0",
 		"ol": "^8.0.0"
-	},
-	"engines": {
-		"node": "16.16.0"
 	}
 }
