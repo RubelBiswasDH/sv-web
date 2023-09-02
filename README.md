@@ -4,7 +4,7 @@ Everything you need to build a Svelte project, powered by [`create-svelte`](http
 
 ## Install
 
-If you're seeing this, you've probably already done this step. Congrats!
+Make sure you have installed node v16.16.0 or higher in your environment
 
 ```bash
 # from the projects root directory run

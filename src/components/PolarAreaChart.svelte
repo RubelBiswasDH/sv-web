@@ -57,9 +57,9 @@
                         position: 'bottom',
                         labels: {
                             font: {
-                                size: 8
+                                size: 12
                             },
-                            boxWidth: 8
+                            boxWidth: 12
                         }
                     },
                     title: {
@@ -77,4 +77,4 @@
     })
 </script>
 
-<canvas id={chartId}></canvas>
+<canvas id={ chartId }></canvas>
