@@ -1,47 +1,69 @@
-<script>
+<script lang="ts">
 	import { page } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
+	import { onMount } from 'svelte';
+
+	let hide = ''
+	let timeout: any = null
+
+	function isMouseAtTop() {
+		document.addEventListener('mousemove', function(event) {
+			const mouseY = event.clientY || event.pageY;
+			if (mouseY <= 20) {
+				if (timeout){
+					clearTimeout(timeout)
+				}
+				hide = ''
+				timeout = setTimeout(() => {
+					hide =  'hide'
+				}, 4000)
+			}
+		});
+	}
+
+	onMount(() => {
+		isMouseAtTop()
+		if (timeout){
+			clearTimeout(timeout)
+		}
+		timeout = setTimeout(() => {
+			hide =  'hide'
+		}, 4000)
+	})
 </script>
 
-<header>
-	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
-		</a>
-	</div>
-
+<header class={ hide }>
 	<nav>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
 		</svg>
 		<ul>
-			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Home</a>
+			<li aria-current={$page.url.pathname === '/layout' ? 'page' : undefined}>
+				<a href="/layout">Layout</a>
 			</li>
-			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">About</a>
+			<li aria-current={$page.url.pathname === '/chart' ? 'page' : undefined}>
+				<a href="/chart">Chart</a>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Sverdle</a>
+			<li aria-current={$page.url.pathname.startsWith('/map') ? 'page' : undefined}>
+				<a href="/map">Map</a>
 			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
 		</svg>
 	</nav>
-
-	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
-			<img src={github} alt="GitHub" />
-		</a>
-	</div>
 </header>
 
 <style>
 	header {
 		display: flex;
 		justify-content: space-between;
+		z-index: 1000;
+		position: fixed;
+		left: auto;
+	}
+
+	.hide {
+		display: none;
 	}
 
 	.corner {
@@ -70,8 +92,8 @@
 	}
 
 	svg {
-		width: 2em;
-		height: 3em;
+		width: 1em;
+		height: 1.5em;
 		display: block;
 	}
 
@@ -83,7 +105,7 @@
 		position: relative;
 		padding: 0;
 		margin: 0;
-		height: 3em;
+		height: 1.5em;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -116,7 +138,7 @@
 		padding: 0 0.5rem;
 		color: var(--color-text);
 		font-weight: 700;
-		font-size: 0.8rem;
+		font-size: 0.4rem;
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
 		text-decoration: none;

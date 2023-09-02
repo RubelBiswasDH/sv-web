@@ -1,9 +1,12 @@
 <script>
 	import './styles.css';
 	import "../app.css";
+	import './Header.svelte'
+    import Header from './Header.svelte';
 </script>
 
 <div class="app">
+	<Header />
 	<main>
 		<slot />
 	</main>
@@ -13,6 +16,7 @@
 	.app {
 		display: flex;
 		flex-direction: column;
+		align-items: center;
 		min-height: 100vh;
 	}
 
