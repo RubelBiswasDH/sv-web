@@ -1,7 +1,7 @@
 <script lang="ts">
-    export let containerId: any, url: any, fillColor: any, fillOpacity: any; 
+    export let containerId: any, url: any, color: any, opacity: any; 
 
-    import { onMount } from 'svelte';
+    import { afterUpdate } from 'svelte';
     import Map from 'ol/Map.js';
     import OSM from 'ol/source/OSM.js';
     import TileLayer from 'ol/layer/Tile.js';
@@ -12,11 +12,7 @@
     import Style from 'ol/style/Style';
     import Fill from 'ol/style/Fill.js';
 
-   import { hexToRgb } from '../utils/utils';
-
-   $:color = hexToRgb(fillColor, fillOpacity ?? .1)
-
-    const renderMap = () => {
+    const renderMap = (url: any, color: any, opacity: any) => {
         const map = new Map({
             target: 'map',
             layers: [
@@ -32,18 +28,20 @@
                         fill: new Fill({
                             color: color
                         })
-                    })
+                    }),
+                    opacity: opacity
                 })
             ],
             view: new View({
-                center: [0, 0],
-                zoom: 4,
+                center: [90.41299666703134, 23.813828263563078],
+                projection: 'EPSG:4326',
+                zoom: 5,
             }),
         });
     }
 
-    onMount(() => {
-        renderMap()
+    afterUpdate(() => {
+        renderMap(url, color, opacity)
     })
   
 </script>

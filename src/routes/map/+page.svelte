@@ -6,7 +6,7 @@
     <OpenLayerMap
         containerId="map"
         url="countries.geojson"
-        fillColor="#006a4e"
-        fillOpacity={ 0.75 }
+        color="#006a4e"
+        opacity={ 0.75 }
     />
 </div>
