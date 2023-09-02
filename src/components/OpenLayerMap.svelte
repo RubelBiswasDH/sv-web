@@ -33,8 +33,9 @@
                 })
             ],
             view: new View({
-                center: [0, 0],
-                zoom: 4,
+                center: [90.41299666703134, 23.813828263563078],
+                projection: 'EPSG:4326',
+                zoom: 5,
             }),
         });
     }
