@@ -43,7 +43,7 @@
 			<li aria-current={$page.url.pathname === '/chart' ? 'page' : undefined}>
 				<a href="/chart">Chart</a>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/map') ? 'page' : undefined}>
+			<li data-sveltekit-preload-data="hover" data-sveltekit-preload-code="eager" aria-current={$page.url.pathname.startsWith('/map') ? 'page' : undefined}>
 				<a href="/map">Map</a>
 			</li>
 		</ul>
